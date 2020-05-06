@@ -1,0 +1,12 @@
+# Script File
+
+sudo cp -v -r -f * /root/lwtest/
+
+if sudo docker ps | grep testwebos
+then
+sudo docker rm -f testwebos
+echo "old test system removed"
+fi
+
+sudo docker run -dit -p 8083:80 -v /root/lwtest/:/usr/local/apache2/htdocs/ --name testwebos httpd
+
