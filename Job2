@@ -1,0 +1,9 @@
+#Script
+
+sudo cp -v -r -f * /root/lwweb/
+if sudo docker ps | grep mywebos
+then
+echo already
+else
+sudo docker run -dit -p 8082:80 -v /root/lwweb/:/usr/local/apache2/htdocs/ --name mywebos httpd
+fi
